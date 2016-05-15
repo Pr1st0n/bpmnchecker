@@ -7,7 +7,7 @@ app.service('UploadService', function($http) {
       
       formData.append('file', file);
       
-      $http.post('http://localhost:8095/verify', formData, {
+      $http.post('http://52.58.134.150/rest-api/verify', formData, {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
         })

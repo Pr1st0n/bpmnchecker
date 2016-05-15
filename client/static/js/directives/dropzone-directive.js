@@ -8,7 +8,7 @@ app.directive('dropzone', function() {
     restrict: 'C',
     link: function($scope, element, attrs) {
       var config = {
-        url: 'http://localhost:8095/verify',
+        url: 'http://52.58.134.150/rest-api/verify',
         maxFilesize: 100,
         paramName: "uploadfile",
         maxThumbnailFilesize: 10,
