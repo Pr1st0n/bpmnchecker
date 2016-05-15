@@ -8,7 +8,7 @@ app.directive('dropzone', function() {
     restrict: 'C',
     link: function($scope, element, attrs) {
       var config = {
-        url: 'http://localhost:8095/rest-api/verify',
+        url: 'http://localhost:8095/verify',
         maxFilesize: 100,
         paramName: "uploadfile",
         maxThumbnailFilesize: 10,
@@ -19,7 +19,7 @@ app.directive('dropzone', function() {
       var eventHandlers = {
         'addedfile': function(file) {
           $scope.file = file;
-          if (this.files[1] != null) {
+          if (this.files[1] !== null) {
             this.removeFile(this.files[0]);
           }
           $scope.$apply(function() {

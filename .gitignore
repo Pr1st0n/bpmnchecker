@@ -1,3 +1,4 @@
 .idea/
 target/
 client/bower_components/
+*.iml

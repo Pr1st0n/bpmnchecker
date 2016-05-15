@@ -18,7 +18,7 @@ import static org.springframework.http.HttpStatus.*;
 
 @RestController
 public class MainController {
-    @RequestMapping(value = "/rest-api/verify", method = RequestMethod.POST)
+    @RequestMapping(value = "/verify", method = RequestMethod.POST)
     public ResponseEntity<JSONObject> uploadFile(@RequestParam("file") MultipartFile file) {
         JSONObject responseBody = new JSONObject();
 
