@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" class="ng-cloak">
+<head>
+  <meta charset="UTF-8">
+  <title>Bpmn-Checker</title>
+
+  <link href="bower_components/dropzone/dist/dropzone.css" rel="stylesheet">
+  <link href="bower_components/dropzone/dist/basic.css" rel="stylesheet">
+
+  <!-- AngularJS -->
+  <script src="bower_components/angular/angular.min.js"></script>
+  <!-- DropzoneJS -->
+  <script src="bower_components/dropzone/dist/dropzone.js"></script>
+  <!-- JQuery -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+
+  <link href="static/css/app.css" rel="stylesheet">
+  <script src="static/js/app.js"></script>
+  <script src="static/js/controllers/upload-controller.js"></script>
+  <script src="static/js/directives/dropzone-directive.js"></script>
+  <script src="static/js/services/upload-service.js"></script>
+
+  <!-- Dropzone special -->
+  <script type="text/javascript">Dropzone.autoDiscover = false;</script>
+</head>
+<body>
+<div ng-controller="UploadCtrl">
+  <form action="" class="dropzone" dropzone="" id="dropzone">
+    <div class="dz-default dz-message">
+      Click or Drop to upload!
+    </div>
+  </form>
+  <label class="result"></label>
+</div>
+</body>
+</html>
