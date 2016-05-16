@@ -24,12 +24,15 @@
   <script type="text/javascript">Dropzone.autoDiscover = false;</script>
 </head>
 <body>
-<div ng-controller="UploadCtrl">
+<div id="main-container" ng-controller="UploadCtrl">
+  <img class="logo" src="logo.png">
+  <hr>
   <form action="" class="dropzone" dropzone="" id="dropzone">
     <div class="dz-default dz-message">
       Click or Drop to upload!
     </div>
   </form>
+  <hr>
   <label class="result"></label>
 </div>
 </body>

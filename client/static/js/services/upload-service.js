@@ -17,6 +17,13 @@ app.service('UploadService', function($http) {
           console.log(response);
 
           $('.result').text('Result: ' + data.result);
+
+          if (data.valid) {
+            $('.result').css('color', 'green');
+          }
+          else {
+            $('.result').css('color', 'red');
+          }
         })
         .error(function(err) {
           console.log(err);

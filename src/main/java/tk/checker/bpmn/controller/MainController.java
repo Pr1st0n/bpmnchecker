@@ -31,6 +31,7 @@ public class MainController {
                 System.out.println(result);
 
                 responseBody.put("result", "Model is valid");
+                responseBody.put("valid", true);
             }
             catch (BpmnParseException e) {
                 responseBody.put("result", "Verification failed: " + e.getMessage());

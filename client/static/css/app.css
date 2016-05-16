@@ -1,0 +1,18 @@
+#main-container {
+    width: 30%;
+    margin-left: 35%;
+    margin-top: 10%;
+}
+
+.logo {
+    margin-left: 20%;
+}
+
+.dropzone {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.result {
+    margin-left: 37%;
+}
