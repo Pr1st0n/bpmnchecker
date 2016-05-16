@@ -34,12 +34,12 @@ public class MainController {
                 responseBody.put("valid", true);
             }
             catch (BpmnParseException e) {
-                responseBody.put("result", "Verification failed: " + e.getMessage());
+                responseBody.put("result", "Verification failed: " + e.getCause().getMessage());
 
                 return new ResponseEntity<>(responseBody, OK);
             }
             catch (BpmnVerifyException e) {
-                responseBody.put("result", "Verification failed: " + e.getMessage());
+                responseBody.put("result", "Verification failed: " + e.getCause().getMessage());
 
                 return new ResponseEntity<>(responseBody, OK);
             }

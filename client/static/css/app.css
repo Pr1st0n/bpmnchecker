@@ -13,6 +13,22 @@
     margin-bottom: 20px;
 }
 
-.result {
-    margin-left: 37%;
+.result-form {
+    background-color: white;
+    border: 2px solid #CCCCCC;
+    border-radius: 20px;
+    height: 40px;
+}
+
+.result-form label {
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.result-form .result {
+    position: absolute;
+    font-size: small;
+    margin-top: 12px;
+    margin-left: 60px;
 }
