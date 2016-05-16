@@ -12,21 +12,19 @@ app.service('UploadService', function($http) {
           headers: {'Content-Type': undefined}
         })
         .success(function(data, status, response) {
-          console.log(data);
-          console.log(status);
-          console.log(response);
+          var $result = $('.result');
 
-          $('.result').text('Result: ' + data.result);
+          $result.text(data.result);
 
           if (data.valid) {
-            $('.result').css('color', 'green');
+            $result.css('color', 'green');
           }
           else {
-            $('.result').css('color', 'red');
+            $result.css('color', 'red');
           }
         })
         .error(function(err) {
-          console.log(err);
+          $('.result').text(err);
         });
     }
   };
