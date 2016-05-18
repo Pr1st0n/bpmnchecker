@@ -2,7 +2,7 @@
 
 app.service('UploadService', function($http) {
   return {
-    upload: function(file, uploadUrl) {
+    upload: function(file) {
       var formData = new FormData();
       
       formData.append('file', file);
@@ -11,7 +11,7 @@ app.service('UploadService', function($http) {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
         })
-        .success(function(data, status, response) {
+        .success(function(data) {
           var $result = $('.result');
 
           $result.text(data.result);

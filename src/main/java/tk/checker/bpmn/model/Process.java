@@ -9,17 +9,26 @@ import java.util.List;
 
 public class Process {
     private final String id;
-    private final List<FlowEntity> flowEntities;
-    private final List<ConnectionEntity> connectionEntities;
+    private List<FlowEntity> flowEntities = new ArrayList<>();
+    private List<ConnectionEntity> connectionEntities = new ArrayList<>();
+    private Event startEvent;
+    private List<Event> endEvents = new ArrayList<>();
+    private List<CommonVerificationError> errors = new ArrayList<>();
 
-    public Process(String id, List<FlowEntity> flowEntities, List<ConnectionEntity> connectionEntities) {
+    public Process(String id) {
         this.id = id;
-        this.flowEntities = flowEntities;
-        this.connectionEntities = connectionEntities;
     }
 
     public String getId() {
         return id;
+    }
+
+    public void addFlowEntity(FlowEntity flowEntity) {
+        this.flowEntities.add(flowEntity);
+    }
+
+    public void addConnectionEntity(ConnectionEntity connectionEntity) {
+        this.connectionEntities.add(connectionEntity);
     }
 
     public List<FlowEntity> getFlowEntities() {
@@ -30,32 +39,30 @@ public class Process {
         return Collections.unmodifiableList(connectionEntities);
     }
 
-    @Nullable
-    public Event getStartEvent() {
-        Event start = null;
-
-        for (FlowEntity flowEntity : flowEntities) {
-            if (flowEntity.getType().equals(Event.EventType.START)) {
-                start = (Event) flowEntity;
-
-                break;
-            }
-        }
-
-        return start;
+    public void setStartEvent(Event startEvent) {
+        addFlowEntity(startEvent);
+        this.startEvent = startEvent;
     }
 
-    @Nullable
+    public void addEndEvent(Event endEvent) {
+        addFlowEntity(endEvent);
+        this.endEvents.add(endEvent);
+    }
+
+    public Event getStartEvent() {
+        return startEvent;
+    }
+
     public List<Event> getEndEvents() {
-        List<Event> endEvents = new ArrayList<>();
+        return Collections.unmodifiableList(endEvents);
+    }
 
-        for (FlowEntity flowEntity : flowEntities) {
-            if (flowEntity.getType().equals(Event.EventType.END)) {
-                endEvents.add((Event) flowEntity);
-            }
-        }
+    public List<CommonVerificationError> getErrors() {
+        return Collections.unmodifiableList(errors);
+    }
 
-        return endEvents;
+    public void addError(CommonVerificationError error) {
+        this.errors.add(error);
     }
 
     public List<ConnectionEntity> getConnectionsByEndPoint(FlowEntity flowEntity) {
