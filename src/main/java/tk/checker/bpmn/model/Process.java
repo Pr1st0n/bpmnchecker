@@ -1,6 +1,6 @@
 package tk.checker.bpmn.model;
 
-import tk.checker.bpmn.model.element.Event;
+import tk.checker.bpmn.model.entities.Event;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ public class Process {
     private List<ConnectionEntity> connectionEntities = new ArrayList<>();
     private Event startEvent;
     private List<Event> endEvents = new ArrayList<>();
-    private List<CommonVerificationError> errors = new ArrayList<>();
+    private List<CommonVerificationError> errorList = new ArrayList<>();
 
     public Process(String id) {
         this.id = id;
@@ -57,12 +57,12 @@ public class Process {
         return Collections.unmodifiableList(endEvents);
     }
 
-    public List<CommonVerificationError> getErrors() {
-        return Collections.unmodifiableList(errors);
+    public List<CommonVerificationError> getErrorList() {
+        return Collections.unmodifiableList(errorList);
     }
 
     public void addError(CommonVerificationError error) {
-        this.errors.add(error);
+        this.errorList.add(error);
     }
 
     public List<ConnectionEntity> getConnectionsByEndPoint(FlowEntity flowEntity) {
@@ -80,16 +80,12 @@ public class Process {
 
     @Nullable
     public FlowEntity getFlowEntityById(String id) {
-        FlowEntity flowEntity = null;
-
         for (FlowEntity flowEntity0 : flowEntities) {
             if (flowEntity0.getId().equals(id)) {
-                flowEntity = flowEntity0;
-
-                break;
+                return flowEntity0;
             }
         }
 
-        return flowEntity;
+        return null;
     }
 }

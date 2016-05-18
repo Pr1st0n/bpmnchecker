@@ -32,7 +32,7 @@ public class MainController {
 
                 System.out.println(result);
 
-                responseBody = gson.toJson(result.getErrors());
+                responseBody = gson.toJson(result.getErrorList());
             }
             catch (BpmnParseException e) {
                 responseBody = gson.toJson(new CommonVerificationError(VerificationErrorType.OTHER, e.getMessage()));

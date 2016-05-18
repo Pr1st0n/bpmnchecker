@@ -1,17 +1,16 @@
-package tk.checker.bpmn.model.element;
+package tk.checker.bpmn.model.entities;
 
 import tk.checker.bpmn.model.FlowEntity;
-import org.jetbrains.annotations.Nullable;
 
-public class Event implements FlowEntity {
-    public enum EventType implements FlowEntityType {START, END}
+public class Activity implements FlowEntity {
+    public enum ActivityType implements FlowEntityType {TASK}
 
     private final String id;
-    private final EventType type;
+    private final ActivityType type;
     private final String incoming;
-    private final String outgoing;
+    private final String  outgoing;
 
-    public Event(String id, EventType type, @Nullable String incoming, @Nullable String outgoing) {
+    public Activity(String id, ActivityType type, String incoming, String outgoing) {
         this.id = id;
         this.type = type;
         this.incoming = incoming;
@@ -24,16 +23,14 @@ public class Event implements FlowEntity {
     }
 
     @Override
-    public EventType getType() {
+    public ActivityType getType() {
         return type;
     }
 
-    @Nullable
     public String getIncoming() {
         return incoming;
     }
 
-    @Nullable
     public String getOutgoing() {
         return outgoing;
     }

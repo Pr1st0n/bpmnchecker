@@ -8,12 +8,12 @@ import tk.checker.bpmn.utils.BpmnParseException;
 import tk.checker.bpmn.model.FlowEntity;
 import tk.checker.bpmn.model.Process;
 import tk.checker.bpmn.model.connection.Connector;
-import tk.checker.bpmn.model.element.Activity;
-import tk.checker.bpmn.model.element.Activity.ActivityType;
-import tk.checker.bpmn.model.element.Event;
-import tk.checker.bpmn.model.element.Event.EventType;
-import tk.checker.bpmn.model.element.Gateway;
-import tk.checker.bpmn.model.element.Gateway.GatewayType;
+import tk.checker.bpmn.model.entities.Activity;
+import tk.checker.bpmn.model.entities.Activity.ActivityType;
+import tk.checker.bpmn.model.entities.Event;
+import tk.checker.bpmn.model.entities.Event.EventType;
+import tk.checker.bpmn.model.entities.Gateway;
+import tk.checker.bpmn.model.entities.Gateway.GatewayType;
 import org.w3c.dom.*;
 
 import javax.xml.parsers.DocumentBuilder;

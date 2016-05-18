@@ -10,11 +10,12 @@
 }
 
 .dropzone {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .result-form {
+    margin-top: 10px;
     background-color: white;
     border: 2px solid #CCCCCC;
     border-radius: 10px;

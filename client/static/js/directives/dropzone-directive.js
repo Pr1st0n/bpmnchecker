@@ -1,12 +1,12 @@
 'use strict';
 
-function dropzone() {
-}
+var dropzone = function() {
+};
 
 app.directive('dropzone', function() {
   return {
     restrict: 'C',
-    link: function($scope, element, attrs) {
+    link: function($scope, element) {
       var config = {
         url: 'http://localhost:8095/verify',
         maxFilesize: 100,
@@ -38,10 +38,6 @@ app.directive('dropzone', function() {
       angular.forEach(eventHandlers, function(handler, event) {
         dropzone.on(event, handler);
       });
-
-      $scope.processDropzone = function() {
-        dropzone.processQueue();
-      };
 
       $scope.resetDropzone = function() {
         dropzone.removeAllFiles();

@@ -3,7 +3,7 @@ package tk.checker.bpmn.service;
 import tk.checker.bpmn.model.*;
 import tk.checker.bpmn.model.CommonVerificationError.VerificationErrorType;
 import tk.checker.bpmn.model.Process;
-import tk.checker.bpmn.model.element.Event;
+import tk.checker.bpmn.model.entities.Event;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.alg.ConnectivityInspector;
 import org.jgrapht.alg.CycleDetector;
