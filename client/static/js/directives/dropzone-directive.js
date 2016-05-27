@@ -1,7 +1,6 @@
 'use strict';
 
-var dropzone = function() {
-};
+var dropzone = function() {};
 
 app.directive('dropzone', function() {
   return {
@@ -10,7 +9,7 @@ app.directive('dropzone', function() {
       var config = {
         url: 'http://localhost:8095/verify',
         maxFilesize: 100,
-        paramName: "uploadfile",
+        paramName: 'uploadfile',
         maxThumbnailFilesize: 10,
         parallelUploads: 1,
         autoProcessQueue: false
@@ -35,7 +34,7 @@ app.directive('dropzone', function() {
 
       dropzone = new Dropzone(element[0], config);
 
-      angular.forEach(eventHandlers, function(handler, event) {
+      _.each(eventHandlers, function(handler, event) {
         dropzone.on(event, handler);
       });
 

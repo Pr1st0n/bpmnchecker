@@ -2,6 +2,7 @@ package tk.checker.bpmn.model;
 
 import tk.checker.bpmn.model.entities.Event;
 import org.jetbrains.annotations.Nullable;
+import tk.checker.bpmn.service.CommonVerificationError;
 
 import java.util.ArrayList;
 import java.util.Collections;

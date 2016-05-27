@@ -1,7 +1,7 @@
 package tk.checker.bpmn.service;
 
 import tk.checker.bpmn.model.*;
-import tk.checker.bpmn.model.CommonVerificationError.VerificationErrorType;
+import tk.checker.bpmn.service.CommonVerificationError.VerificationErrorType;
 import tk.checker.bpmn.model.Process;
 import tk.checker.bpmn.model.entities.Event;
 import org.jgrapht.DirectedGraph;
@@ -50,8 +50,7 @@ public class BpmnVerifier {
         }
 
         // Check for connectivity.
-        ConnectivityInspector<FlowEntity, DefaultEdge> connectivityInspector =
-            new ConnectivityInspector<>(directedGraph);
+        ConnectivityInspector<FlowEntity, DefaultEdge> connectivityInspector = new ConnectivityInspector<>(directedGraph);
         Event startEvent = process.getStartEvent();
         List<Event> endEvents = process.getEndEvents();
 

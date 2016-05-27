@@ -1,13 +1,12 @@
 package tk.checker.bpmn.service;
 
 import org.springframework.web.multipart.MultipartFile;
-import tk.checker.bpmn.model.EntityVerificationError;
-import tk.checker.bpmn.model.CommonVerificationError.VerificationErrorType;
+import tk.checker.bpmn.service.CommonVerificationError.VerificationErrorType;
 import tk.checker.bpmn.utils.Constants;
 import tk.checker.bpmn.utils.BpmnParseException;
 import tk.checker.bpmn.model.FlowEntity;
 import tk.checker.bpmn.model.Process;
-import tk.checker.bpmn.model.connection.Connector;
+import tk.checker.bpmn.model.entities.Connector;
 import tk.checker.bpmn.model.entities.Activity;
 import tk.checker.bpmn.model.entities.Activity.ActivityType;
 import tk.checker.bpmn.model.entities.Event;

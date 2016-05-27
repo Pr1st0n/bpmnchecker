@@ -1,4 +1,4 @@
-package tk.checker.bpmn.model;
+package tk.checker.bpmn.service;
 
 public class EntityVerificationError extends CommonVerificationError {
     private final String entityId;

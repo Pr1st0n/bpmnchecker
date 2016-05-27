@@ -1,4 +1,4 @@
-package tk.checker.bpmn.model.connection;
+package tk.checker.bpmn.model.entities;
 
 import tk.checker.bpmn.model.ConnectionEntity;
 

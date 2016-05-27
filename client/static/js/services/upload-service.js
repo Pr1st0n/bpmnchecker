@@ -9,7 +9,7 @@ app.service('UploadService', function($http) {
       
       $http.post('http://localhost:8095/verify', formData, {
           transformRequest: angular.identity,
-          headers: {'Content-Type': undefined}
+          headers: {'Content-Type': 'multipart/mixed'}
         })
         .success(function(data) {
           var $result = $('.result');
