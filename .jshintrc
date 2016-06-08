@@ -5,11 +5,12 @@
   "unused": true,
   "jquery": true,
   "quotmark": "single",
-  "es3": true,
+  "esversion": 6,
   "globals": {
     "angular": false,
     "app": false,
     "FormData": false,
-    "Dropzone": false
+    "Dropzone": false,
+    "_": false
   }
 }

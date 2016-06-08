@@ -19,18 +19,14 @@
     background-color: white;
     border: 2px solid #CCCCCC;
     border-radius: 10px;
-    height: 40px;
+    min-height: 40px;
+    max-height: 200px;
+    overflow-y: scroll;
+    list-style-type: none;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
-.result-form label {
-    position: absolute;
+.result-form li:first-child {
     margin-top: 10px;
-    margin-left: 10px;
-}
-
-.result-form .result {
-    position: absolute;
-    font-size: small;
-    margin-top: 12px;
-    margin-left: 60px;
 }
