@@ -1,10 +1,6 @@
-package tk.checker.bpmn.utils.exceptions;
+package tk.checker.bpmn.utils;
 
 public class BpmnParseException extends Exception {
-    public BpmnParseException(Throwable t) {
-        super(t);
-    }
-
     public BpmnParseException(String msg) {
         super(msg);
     }

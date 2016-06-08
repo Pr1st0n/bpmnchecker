@@ -2,7 +2,7 @@
 
 app.service('UploadService', function($http) {
   return {
-    upload: function(file, uploadUrl) {
+    upload: function(file) {
       var formData = new FormData();
       
       formData.append('file', file);
@@ -11,16 +11,24 @@ app.service('UploadService', function($http) {
           transformRequest: angular.identity,
           headers: {'Content-Type': undefined}
         })
-        .success(function(data, status, response) {
-          var $result = $('.result');
+        .success(function(data) {
+          var $resultForm = $('.result-form');
 
-          $result.text(data.result);
+          $resultForm.empty();
 
-          if (data.valid) {
-            $result.css('color', 'green');
+          if (data.length === 0) {
+            $resultForm.append('<li>Model is valid!</li>');
+            $resultForm.find('li').css({ color: 'green' });
           }
           else {
-            $result.css('color', 'red');
+            _.each(data, res => {
+              $resultForm.append('<li>Id: ' + res.entityId + '</li>');
+              $resultForm.append('<li>Error type: ' + res.type + '</li>');
+              $resultForm.append('<li>Discription: ' + res.message + '\n</li>');
+              $resultForm.append('<hr />');
+
+              $resultForm.css('color', 'red');
+            });
           }
         })
         .error(function(err) {

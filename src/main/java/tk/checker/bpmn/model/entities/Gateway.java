@@ -1,4 +1,4 @@
-package tk.checker.bpmn.model.element;
+package tk.checker.bpmn.model.entities;
 
 import tk.checker.bpmn.model.FlowEntity;
 

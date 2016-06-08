@@ -1,16 +1,15 @@
 'use strict';
 
-function dropzone() {
-}
+var dropzone = function() {};
 
 app.directive('dropzone', function() {
   return {
     restrict: 'C',
-    link: function($scope, element, attrs) {
+    link: function($scope, element) {
       var config = {
         url: 'http://52.58.134.150/rest-api/verify',
         maxFilesize: 100,
-        paramName: "uploadfile",
+        paramName: 'uploadfile',
         maxThumbnailFilesize: 10,
         parallelUploads: 1,
         autoProcessQueue: false
@@ -35,13 +34,9 @@ app.directive('dropzone', function() {
 
       dropzone = new Dropzone(element[0], config);
 
-      angular.forEach(eventHandlers, function(handler, event) {
+      _.each(eventHandlers, function(handler, event) {
         dropzone.on(event, handler);
       });
-
-      $scope.processDropzone = function() {
-        dropzone.processQueue();
-      };
 
       $scope.resetDropzone = function() {
         dropzone.removeAllFiles();

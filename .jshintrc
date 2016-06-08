@@ -1,0 +1,16 @@
+{
+  "strict": true,
+  "module": true,
+  "undef": true,
+  "unused": true,
+  "jquery": true,
+  "quotmark": "single",
+  "esversion": 6,
+  "globals": {
+    "angular": false,
+    "app": false,
+    "FormData": false,
+    "Dropzone": false,
+    "_": false
+  }
+}

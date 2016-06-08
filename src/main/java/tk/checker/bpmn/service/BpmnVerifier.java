@@ -1,10 +1,9 @@
 package tk.checker.bpmn.service;
 
-import tk.checker.bpmn.utils.exceptions.BpmnVerifyException;
-import tk.checker.bpmn.model.ConnectionEntity;
-import tk.checker.bpmn.model.FlowEntity;
+import tk.checker.bpmn.model.*;
+import tk.checker.bpmn.service.CommonVerificationError.VerificationErrorType;
 import tk.checker.bpmn.model.Process;
-import tk.checker.bpmn.model.element.Event;
+import tk.checker.bpmn.model.entities.Event;
 import org.jgrapht.DirectedGraph;
 import org.jgrapht.alg.ConnectivityInspector;
 import org.jgrapht.alg.CycleDetector;
@@ -18,7 +17,7 @@ import java.util.Set;
 public class BpmnVerifier {
     private BpmnVerifier() {}
 
-    public static boolean verify(Process process) throws BpmnVerifyException {
+    public static Process verify(Process process) {
         DirectedGraph<FlowEntity, DefaultEdge> directedGraph = new DefaultDirectedGraph<>(DefaultEdge.class);
 
         for (ConnectionEntity connection : process.getConnectionEntities()) {
@@ -26,7 +25,7 @@ public class BpmnVerifier {
             FlowEntity target = process.getFlowEntityById(connection.getTargetRef());
 
             if (source == null || target == null) {
-                throw new BpmnVerifyException("Mising FlowEntity for connection id: " + connection.getId());
+                process.addError(new EntityVerificationError(connection.getId(), VerificationErrorType.INCORRECT_USAGE, "Connection having missed endpoint"));
             }
 
             if (!directedGraph.containsVertex(source)) {
@@ -47,22 +46,21 @@ public class BpmnVerifier {
             Set cycle = detector.findCycles();
 
             //TODO: Handle proper cycles!
-            throw new BpmnVerifyException("Found Dead-lock for " + cycle);
+            process.addError(new CommonVerificationError(VerificationErrorType.LIVELOCK, "Found Dead-lock for " + cycle));
         }
 
         // Check for connectivity.
-        ConnectivityInspector<FlowEntity, DefaultEdge> connectivityInspector =
-            new ConnectivityInspector<>(directedGraph);
+        ConnectivityInspector<FlowEntity, DefaultEdge> connectivityInspector = new ConnectivityInspector<>(directedGraph);
         Event startEvent = process.getStartEvent();
         List<Event> endEvents = process.getEndEvents();
 
         if (endEvents.isEmpty() || startEvent == null) {
-            throw new BpmnVerifyException("Incorrect model missing start or end events");
+            process.addError(new CommonVerificationError(VerificationErrorType.LIVELOCK, "Incorrect model missing start or end events"));
         }
 
         for (Event endEvent : endEvents) {
             if (!connectivityInspector.pathExists(startEvent, endEvent)) {
-                throw new BpmnVerifyException("Missing path from " + startEvent.getId() + " to " + endEvent.getId());
+                process.addError(new CommonVerificationError(VerificationErrorType.ACTIVE_TERMENATION, "Missing path from " + startEvent.getId() + " to " + endEvent.getId()));
             };
         }
 
@@ -78,6 +76,6 @@ public class BpmnVerifier {
         }
         // TODO }
 
-        return true;
+        return process;
     }
 }
