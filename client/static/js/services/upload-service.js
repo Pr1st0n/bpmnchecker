@@ -9,7 +9,8 @@ app.service('UploadService', function($http) {
       
       $http.post('http://localhost:8095/verify', formData, {
           transformRequest: angular.identity,
-          headers: {'Content-Type': undefined}
+          headers: {'Content-Type': undefined},
+          timeout: 10 * 1000
         })
         .success(function(data) {
           var $resultForm = $('.result-form');
@@ -32,7 +33,13 @@ app.service('UploadService', function($http) {
           }
         })
         .error(function(err) {
-          $('.result').text(err);
+          var errMessage = err ? err.message : 'Timeout occurred during waiting for the request';
+          var $resultForm = $('.result-form');
+
+          $resultForm.empty();
+
+          $resultForm.append('<li>Server error: ' + errMessage + '</li>');
+          $resultForm.find('li').css({ color: 'red' });
         });
     }
   };
