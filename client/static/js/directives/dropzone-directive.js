@@ -27,6 +27,21 @@ app.directive('dropzone', function() {
 
             $resultForm.append('<li>' + 'Unsupported file format' + '</li>');
             $resultForm.find('li').css({ color: 'red' });
+            
+            return;
+          }
+
+          var fileName = file.name.split('.');
+          //Validate file format
+          if (fileName[fileName.length - 1] !== 'bpmn') {
+            var $resultForm = $('.result-form');
+
+            $resultForm.empty();
+
+            $resultForm.append('<li>' + 'Unsupported file format' + '</li>');
+            $resultForm.find('li').css({ color: 'red' });
+
+            return;
           }
 
           $scope.file = file;
