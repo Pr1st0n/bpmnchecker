@@ -33,7 +33,7 @@ app.service('UploadService', function($http) {
           }
         })
         .error(function(err) {
-          var errMessage = err ? err.message : 'Timeout occurred during waiting for the request';
+          var errMessage = err ? err.message : 'Timeout occurred during waiting for the response';
           var $resultForm = $('.result-form');
 
           $resultForm.empty();
