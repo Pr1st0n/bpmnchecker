@@ -27,6 +27,8 @@ app.directive('dropzone', function() {
 
             $resultForm.append('<li>' + 'Unsupported file format' + '</li>');
             $resultForm.find('li').css({ color: 'red' });
+
+            return;
           }
 
           $scope.file = file;
